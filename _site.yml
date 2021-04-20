@@ -5,10 +5,10 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Project"
-      href: project.html
-    - text: "About"
-      href: about.html
+    - text: "Data Science Sample 1"
+      href: Sample1.html
+    - text: "Data Science Sample 2"
+      href: Sample2.html
 
 output:
   html_document:
