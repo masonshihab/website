@@ -10,7 +10,7 @@ navbar:
     - text: "Data Science Sample 2"
       href: sample2.html
     - text: "Resume"
-      href: resume.pdf
+      href: resume.pdf target="_blank"
 
 output:
   html_document:
