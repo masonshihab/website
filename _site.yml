@@ -6,11 +6,11 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Data Science Sample 1"
-      href: Sample1.html
+      href: sample1.html
     - text: "Data Science Sample 2"
-      href: Sample2.html
+      href: sample2.html
     - text: "Resume"
-      href: Resume.pdf
+      href: resume.pdf
 
 output:
   html_document:
