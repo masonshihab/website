@@ -1,0 +1,140 @@
+---
+title: Data Science Sample 1
+author: "Mason Shihab"
+date: "3/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+```
+
+# Portfolio Prompts
+
+Title of Project: Homework 4, Names Dataset  
+
+Brief Description of Problem: Several interesting questions and facts from the dataset were requested.  
+
+What problem were you solving?: See each problem below.  
+
+Solution: See each problem below for solution.  
+
+How did you solve the problem?:  Data manipulation, visualization, and regression.  
+
+What techniques did you use? Why?: Simple R techniques, and regression. This was to confirm if intuitions regarding the data bore out in fact.  
+
+Were there any considerations you had to make along the way?: Yes, mostly how to prevent too many names from being processed at once, as this is a big dataset.  
+
+Has this project been completed yet?: Yes  
+
+Role: Student  
+
+Did you complete this work individually or as part of a team?: Individually  
+
+Tools / Languages Used: R, RStudio  
+
+Tell us about any applicable languages, business intelligence tools, databases, etc. It would also be helpful to know about any interesting libraries that you used where applicable.Relevant Links
+Any relevant Github repositories, write-ups, or hosted works: GGPlot, dplyr, and tidyverse were used here. The data set analyzed is known as "SSA Longtail Names." I can provide the dataset upon request.
+
+
+# Introduction
+
+We will be loading a dataset of American names from the years 1880 to 2010. (This data set aims to be representative of the true U.S. population.) We will use this dataset to explore the popularity of names and changes in popularity.
+
+```{r}
+names <- read_csv("SSA-longtail-names.csv", 
+                  col_types = cols(X1 = col_skip(), sex = col_character()))
+names$sum = names %>% select(`1880`:`2010`) %>% rowSums()
+
+names_prop = names %>% 
+  pivot_longer(`1880`:`2010`, names_to = "year", values_to = "count") 
+
+names_prop %>% 
+  mutate(year = as.numeric(year)) %>% group_by(year) %>% 
+  mutate(annual_sum = sum(count), proportion = count/annual_sum)
+```
+
+We have loaded the data and used pivot longer to obtain tidy data. See the sample above starting with Mary.
+
+## Proportion of the Top 10 names over time
+
+```{r}
+names_prop %>% 
+  mutate(year = as.numeric(year)) %>% group_by(year) %>% 
+  mutate(annual_sum = sum(count), 
+         proportion = count/annual_sum) %>% top_n(10, sum) %>% 
+  ggplot(aes(x = year, y = proportion, color = name)) + geom_line()
+
+```
+
+Here we see that the ratio of the total population that the top ten names hold has decreased over time. This means that Americans have been naming their children with increasing diversity over time.
+
+## Raw count of the name "Mason" over time.
+```{r}
+names_prop %>% 
+  mutate(year = as.numeric(year)) %>% group_by(year) %>% 
+  mutate(annual_sum = sum(count), proportion = count/annual_sum) %>% 
+  filter(name == "Mason") %>% 
+  ggplot(aes(x = year, y = count, col = sex)) + 
+  geom_line() + labs(title = "Babies named Mason")
+
+```
+
+It appears the name Mason exploded in popularity in the 1980's. The true reason for this is unknown, but it could be due to renewed interest in the freemason society.
+
+## Biggest changes in popularity in one year
+
+We will now scour the data for the biggest one year changes in name popularity.
+
+### Top gainers over prior year as a percent
+```{r}
+names_prop %>% group_by(name, sex) %>% mutate(prevcount = lag(count)) %>% 
+  mutate(growth_factor = count/prevcount) %>% 
+  mutate(difference = count-prevcount) %>% 
+  filter(prevcount > 5000) %>% arrange(desc(growth_factor))
+```
+
+The name that grew as a percent the most (with at least 5000 babies of the same name in the prior year) was Debra. In 1951 the amount of Debra babies grew from 6185 to 17045.
+
+### Top losers over prior year as a percent
+```{r}
+names_prop %>% group_by(name, sex) %>% mutate(prevcount = lag(count)) %>% 
+  mutate(growth_factor = count/prevcount) %>% mutate(difference = count-prevcount) %>% 
+  filter(prevcount > 5000) %>% arrange(growth_factor)
+```
+
+The name that shrank as a percent the most (with at least 5000 babies of the same name in the prior year) was Brittany. In 2001 the amount of Brittany babies shrank from 5176 to 2929. Interestingly, Britney Spears' popularity may have hit a crescendo that year, after performing in the Super Bowl Halftime Show in January (alongside NSYNC and Aerosmith). This warrants further analysis!
+
+### Checking on popularity of Brittany over time
+
+```{r}
+names_brittany = names_prop %>% filter(name == "Brittany") %>% 
+  filter(year > 1995) %>% 
+  mutate(Britney1 = (case_when(year > 1995 & year < 2001 ~"0-before SSBXXXV",
+                                      year >= 2001 & year < 2006 ~ "1-After SSBXXXV")))
+
+summary(lm(count ~ Britney1, data = names_brittany))
+```
+
+We are comparing the five years before to the five years after. From running this simple categorical regression, we see that after Super Bowl XXXV, there was a significant precipitous drop in the amount of babies named Brittany. What about the specific spelling that Britney Spears uses? Could it be that after 2001, mothers who wanted to name their children "Brittany" decided to change the spelling to match Britney Spears?
+
+```{r}
+names_britney = names_prop %>% filter(name == "Britney") %>% 
+  filter(year > 1995) %>% 
+  mutate(Britney2 = (case_when(year > 1995 & year < 2001 ~"0-before SSBXXXV",
+                                      year >= 2001 & year < 2006 ~ "1-After SSBXXXV")))
+
+summary(lm(count ~ Britney2, data = names_britney))
+```
+
+We see no significant change in the spelling "Britney." We can likely rule out that the missing "Brittanys" switched to "Britneys," especially given the negative estimate. (However, none of this should be taken against Britney herself.)
+
+
+# Conclusion
+
+As we can see, this names dataset can be used to analyze and interpret trends in the popularity of names over time.
