@@ -36,7 +36,7 @@ Solution: See each problem below for solution.
 
 How did you solve the problem?: API Keys, Data manipulation, test/train, decision trees and confusion matrices.
 
-What techniques did you use? Why?: Simple ensemble methods of using different models to test for outcomes. This method is best so we can compare accuracy and see which model best fits the data and the assumptions we are making.
+What techniques did you use? Why?: Using multiple machine learning algorithms to compare accuracy. This method is best so we can compare accuracy and see which model best fits the data and the assumptions we are making.
 
 Were there any considerations you had to make along the way?: Yes, first which variables to use from the ACS dataset (American Community Survey). In addition, it was difficult to learn how to use the various models used below, as the data need to be in the right format.
 
@@ -280,4 +280,4 @@ The gradient boosted model was even more accurate than the random forest, reachi
 
 # Conclusion
 
-I suggest that when attempting to predict election results based on census data that use random forests, as it performed nearly as well as gradiant boosting and likely did so with less overfitting, making it more generalizable.
+I suggest that when attempting to predict election results based on census data to use random forests, as it performed nearly as well as gradiant boosting and likely did so with less overfitting, making it more generalizable.
