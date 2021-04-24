@@ -12,7 +12,7 @@ navbar:
     - text: "Data Science Sample 3 (HW9)"
       href: hw9.html
     - text: "Resume"
-      href: resume.pdf"
+      href: resume.pdf
 
 output:
   html_document:
