@@ -1,7 +1,5 @@
 ---
 title: "Data Science Samples"
-author: "Mason Shihab"
-date: "4/27/2021"
 output: html_document
 ---
 

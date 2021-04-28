@@ -1,7 +1,5 @@
 ---
-title: "HW7"
-author: "Mason Shihab"
-date: "late"
+title: "Data Science Sample 3"
 output: html_document
 ---
 

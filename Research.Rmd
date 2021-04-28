@@ -1,7 +1,5 @@
 ---
 title: "Research Projects"
-author: "Mason Shihab"
-date: "4/27/2021"
 output: html_document
 ---
 
@@ -9,11 +7,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Completed
+#### Completed
 
 Shihab, M. & Shoots-Reinhard, B. (in preparation). Effect of political ideology, stay-at-home rates, and increased risk taking in Ohio drivers during COVID-19 shutdown.  
 
-## In Progress
+#### In Progress
 
 Shoots-Reinhard, B., Shihab, M., Svensson, H., Hart, M., Chen, Z., & Renaud, P. (2020). An evidence-based approach to young driver safety communication. Report commissioned by the Ohio Department of Public Safety.
 

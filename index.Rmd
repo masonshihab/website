@@ -1,7 +1,5 @@
 ---
 title: "Home"
-author: "Mason Shihab"
-date: "4/20/2021"
 output: html_document
 ---
 
