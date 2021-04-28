@@ -6,14 +6,16 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+  
+  
+  
 #### Completed
 
-Shihab, M. & Shoots-Reinhard, B. (in preparation). Effect of political ideology, stay-at-home rates, and increased risk taking in Ohio drivers during COVID-19 shutdown.  
+Shoots-Reinhard, B., Shihab, M., Svensson, H., Hart, M., Chen, Z., & Renaud, P. (2020). An evidence-based approach to young driver safety communication. Report commissioned by the Ohio Department of Public Safety.
 
 #### In Progress
 
-Shoots-Reinhard, B., Shihab, M., Svensson, H., Hart, M., Chen, Z., & Renaud, P. (2020). An evidence-based approach to young driver safety communication. Report commissioned by the Ohio Department of Public Safety.
+Shihab, M. & Shoots-Reinhard, B. (in preparation). Effect of political ideology, stay-at-home rates, and increased risk taking in Ohio drivers during COVID-19 shutdown.
 
 Shoots-Reinhard, B., Svensson, H., Shihab, M. & Peters, E. (in preparation). Expert vs. lay understanding of risk: Traffic safety beliefs and priorities in law enforcement professionals and drivers.  
 

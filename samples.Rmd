@@ -6,7 +6,9 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+  
+    
+    
 ##### [Sample 1: Names Dataset](sample1.html)
 
 ##### [Sample 2: Election Prediction](sample2.html)
