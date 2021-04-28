@@ -14,33 +14,6 @@ library(ggplot2)
 library(readr)
 ```
 
-# Portfolio Prompts
-
-Title of Project: Homework 4, Names Dataset  
-
-Brief Description of Problem: Several interesting questions and facts from the dataset were requested.  
-
-What problem were you solving?: See each problem below.  
-
-Solution: See each problem below for solution.  
-
-How did you solve the problem?:  Data manipulation, visualization, and regression.  
-
-What techniques did you use? Why?: Simple R techniques, and regression. This was to confirm if intuitions regarding the data bore out in fact.  
-
-Were there any considerations you had to make along the way?: Yes, mostly how to prevent too many names from being processed at once, as this is a big dataset.  
-
-Has this project been completed yet?: Yes  
-
-Role: Student  
-
-Did you complete this work individually or as part of a team?: Individually  
-
-Tools / Languages Used: R, RStudio  
-
-Tell us about any applicable languages, business intelligence tools, databases, etc. It would also be helpful to know about any interesting libraries that you used where applicable.Relevant Links
-Any relevant Github repositories, write-ups, or hosted works: GGPlot, dplyr, and tidyverse were used here. The data set analyzed is known as "SSA Longtail Names." I can provide the dataset upon request.
-
 
 # Introduction
 

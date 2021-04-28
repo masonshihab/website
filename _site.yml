@@ -1,16 +1,14 @@
-name: "Mason's Website"
+name: "Mason Shihab"
 output_dir: "."
 navbar:
   title: "Mason's GitHub"
   left:
     - text: "Home"
       href: index.html
-    - text: "Data Science Sample 1"
-      href: sample1.html
-    - text: "Data Science Sample 2"
-      href: sample2.html
-    - text: "Data Science Sample 3 (HW9)"
-      href: hw9.html
+    - text: "Data Science Samples"
+      href: samples.html
+    - text: "Research Projects"
+      href: Research.html
     - text: "Resume"
       href: resume.pdf
 

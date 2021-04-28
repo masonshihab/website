@@ -288,13 +288,10 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="sample1.html">Data Science Sample 1</a>
+  <a href="samples.html">Data Science Samples</a>
 </li>
 <li>
-  <a href="sample2.html">Data Science Sample 2</a>
-</li>
-<li>
-  <a href="hw9.html">Data Science Sample 3 (HW9)</a>
+  <a href="Research.html">Research Projects</a>
 </li>
 <li>
   <a href="resume.pdf">Resume</a>
@@ -318,21 +315,6 @@ $(document).ready(function () {
 </div>
 
 
-<div id="portfolio-prompts" class="section level1">
-<h1>Portfolio Prompts</h1>
-<p>Title of Project: Homeworks 5 and 6, Election Prediction</p>
-<p>Brief Description of Problem: What variables will most explain the election outcome and what simple machine learning method is most accurate?</p>
-<p>What problem were you solving?: See each problem below.</p>
-<p>Solution: See each problem below for solution.</p>
-<p>How did you solve the problem?: API Keys, Data manipulation, test/train, decision trees and confusion matrices.</p>
-<p>What techniques did you use? Why?: Using multiple machine learning algorithms to compare accuracy. This method is best so we can compare accuracy and see which model best fits the data and the assumptions we are making.</p>
-<p>Were there any considerations you had to make along the way?: Yes, first which variables to use from the ACS dataset (American Community Survey). In addition, it was difficult to learn how to use the various models used below, as the data need to be in the right format.</p>
-<p>Has this project been completed yet?: Yes</p>
-<p>Role: Student</p>
-<p>Did you complete this work individually or as part of a team?: Individually</p>
-<p>Tools / Languages Used: R, RStudio</p>
-<p>Tell us about any applicable languages, business intelligence tools, databases, etc. It would also be helpful to know about any interesting libraries that you used where applicable.Relevant Links Any relevant Github repositories, write-ups, or hosted works: GGPlot, dplyr, and tidyverse were used here. In addition, Rpart, caret, ipred, ranger, gbm, and xboost. Also used were publicly available election results, which were joined by ACS data that was downloaded using my API Key. I can provide more details on getting a similar API Key upon request.</p>
-</div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Today we will be working with two data sets: census demographic data and results from the 2020 election. We will first join these two data sets together and then partition the combined data between test and train data sets. We will then use the train data set in order to attempt to predict the winner of the election in each county. Accuracy of these predictions will be measured using confusion matrices.</p>
@@ -487,8 +469,8 @@ data_bag</code></pre>
 ## 
 ## Out-of-bag estimate of misclassification error:  0.0731</code></pre>
 <pre class="r"><code>confusionMatrix(predict(data_bag, test_data, type = &quot;class&quot;), test_data$winner)</code></pre>
-<pre><code>## Warning in confusionMatrix.default(predict(data_bag, test_data, type = &quot;class&quot;), : Levels are not in the same order for reference and data. Refactoring
-## data to match.</code></pre>
+<pre><code>## Warning in confusionMatrix.default(predict(data_bag, test_data, type = &quot;class&quot;), : Levels are not in the same order for reference and
+## data. Refactoring data to match.</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference

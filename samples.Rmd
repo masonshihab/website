@@ -1,0 +1,19 @@
+---
+title: "Data Science Samples"
+author: "Mason Shihab"
+date: "4/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##### [Sample 1: Names Dataset](sample1.html)
+
+##### [Sample 2: Election Prediction](sample2.html)
+
+##### [Sample 3: Mask Usage Clustering](sample3.html)
+
+##### [Sample 4: Tweet Sentiment Analysis (HW9)](hw9.html)
+

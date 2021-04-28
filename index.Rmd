@@ -1,5 +1,5 @@
 ---
-title: "Index"
+title: "Home"
 author: "Mason Shihab"
 date: "4/20/2021"
 output: html_document
@@ -8,4 +8,6 @@ output: html_document
 Hello, welcome to my website!  
   
    
-Here you may view samples from data science projects that I found interesting as well as my resume. More coming later!
+Here you may view samples from data science projects that I found interesting as well as my resume. More coming later!  
+
+Add me on [LinkedIn](https://www.linkedin.com/in/masonshihab/)!
