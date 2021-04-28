@@ -2,12 +2,12 @@
 title: "Mason Shihab"
 output: html_document
 ---
+\  
+\  
+\  
   
-  
-  
-Hello, welcome to my website!  
-  
-   
-Here you may view samples from data science projects that I found interesting as well as my resume. More coming later!  
+Hello, welcome to my GitHub!  
+\  
+Here you may view samples from data science projects I found interesting, as well as my research list and resume. More coming soon.
 
 Add me on [LinkedIn](https://www.linkedin.com/in/masonshihab/)!
