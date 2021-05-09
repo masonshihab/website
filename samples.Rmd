@@ -20,3 +20,5 @@ knitr::opts_chunk$set(echo = TRUE)
 ##### [Sample 4: Tweet Sentiment Analysis (HW9)](hw9.html)
 
 ##### [Sample 5: Class Network Analysis (HW10)](hw10.html)
+
+##### [Sample 6: Predicting COVID-19 Outcome (Final Project)](final_project.html)

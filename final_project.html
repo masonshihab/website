@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What Predicts a Country’s COVID-19 Response?</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'What Predicts a Country’s COVID-19 Response?',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Bingling Jason Mason Shi Shi Yixuan' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+  <link href="site_libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="site_libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="site_libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="site_libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            
+  </style>
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">5/2/2021</p>
+          </hgroup>
+  </slide>
+
+<style type="text/css">
+
+body, td {
+   font-size: 14px;
+}
+code.r{
+  font-size: 12px;
+}
+pre {
+  font-size: 4px
+}
+</style>
+
+<slide class=""><hgroup><h2>Covid-19: One Year in a Nutshell</h2></hgroup><article  id="covid-19-one-year-in-a-nutshell">
+
+<ul>
+<li>One year into the global pandemic, the infection rate and death rate differ drastically between countries.</li>
+</ul>
+
+<p><img src="final_project_files/figure-html/unnamed-chunk-3-1.png" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Covid-19: One Year in a Nutshell</h2></hgroup><article  id="covid-19-one-year-in-a-nutshell-1">
+
+<ul>
+<li>Countries around the world have also responded to COVID-19 very differently.</li>
+</ul>
+
+<p><img src="final_project_files/figure-html/unnamed-chunk-5-1.png" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Why?</h2></hgroup><article  id="why">
+
+<ul>
+<li><p>What characteristics can make a country more effective at combating a pandemic?</p></li>
+<li><p>In this study, we attempted to look at this question from four perspectives: <strong>physical/mental wellness</strong>, <strong>social/political development</strong>,<strong>personal independence</strong>, and <strong>government mitigation orders</strong>.</p></li>
+<li><p>The data that we explored included: Cultural Orientation, World Values Survey, Gini Index, Health Investments, Oxford COVID-19 Government Response Tracker</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Hypotheses</h2></hgroup><article  id="hypotheses">
+
+<p><font size="4"> H1a: Variables measuring greater (physical or mental) wellness will predict lower death rates.<br>H1b: Variables measuring greater (physical or mental) wellness will predict lower infection rates.<br><br>H2a: Variables measuring greater social/political development will predict lower death rates.<br>H2b: Variables measuring greater social/political development will predict lower infection rates.<br><br>H3a: Variables measuring greater personal independence will predict greater death rates.<br>H3b: Variables measuring greater personal independence will predict greater infection rates.<br><br>H4a: Variables measuring government mitigation orders will predict lower death rates.<br>H4b: Variables measuring government mitigation orders will predict lower infection rates. </font></p>
+
+</article></slide><slide class=""><hgroup><h2>Methods Step 1: Variable Selection</h2></hgroup><article  id="methods-step-1-variable-selection">
+
+<ul>
+<li><p>We merged the datasets and used stepwise regressions to select the best model for each DV.</p></li>
+<li><p>We decided to use variables suggested by the backward regressions for both DVs since the MSE of the backward regression was smaller for both DVs.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Selected Variables by Relevant Hypotheses</h2></hgroup><article  id="selected-variables-by-relevant-hypotheses">
+
+<font size="4">
+
+<ol>
+
+<li>
+
+Variables related to H1a and H1b: Wellness
+
+<ul>
+
+<li>
+
+Perceived state of health (health)
+
+</li>
+
+<li>
+
+Avoidance of uncertainty (uai)
+
+</li>
+
+</ul>
+
+<li>
+
+Variables related to H2a and H2b: Social/Political Development
+
+<ul>
+
+<li>
+
+Satisfaction with Political System (Pol_Stais)
+
+</li>
+
+<li>
+
+Confidence in Government (Gov_confidence)
+
+</li>
+
+</ul>
+
+<li>
+
+Variables related to H3a and H3b: Personal Independence
+
+<ul>
+
+<li>
+
+Individuality over collectivism (idv)
+
+</li>
+
+<li>
+
+Perceived personal freedom (freedom)
+
+</li>
+
+</ul>
+
+<li>
+
+Variables related to H4a and H4b: Government Mitigation Orders
+
+<ul>
+
+<li>
+
+Total border closure (international_control_level4)
+
+</li>
+
+<li>
+
+Recommendation–but not mandate–to restrict domestic travel (internal_control_level1)
+
+</li>
+
+<li>
+
+Order to wear mask when distancing not possible (facial_cover_level2)
+
+</li>
+
+<li>
+
+Universal masking order (facial_cover_level4)
+
+</li>
+
+</ul>
+
+</ol>
+
+<p></font></p>
+
+</article></slide><slide class=""><hgroup><h2>Selecting variables for Death Rate</h2></hgroup><article  class="codefont2" id="selecting-variables-for-death-rate">
+
+<table style="border-collapse:collapse; border:none;">
+
+<tr>
+
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+
+ 
+
+</th>
+
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+
+Death Rate
+
+</th>
+
+</tr>
+
+<tr>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+
+Predictors
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+Estimates
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+CI
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+p
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Intercept
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.522
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Individualism
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.018</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Uncertainty Avoidance
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.023</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Freedom
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.015</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Political System Satisfaction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.002</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Health
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.075
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Total Border Closure
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.015</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+
+Observations
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+
+39
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+
+R<sup>2</sup> / R<sup>2</sup> adjusted
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+
+0.692 / 0.634
+
+</td>
+
+</tr>
+
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Selecting variables for Infection Rate</h2></hgroup><article  class="codefont2" id="selecting-variables-for-infection-rate">
+
+<table style="border-collapse:collapse; border:none;">
+
+<tr>
+
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+
+ 
+
+</th>
+
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+
+Infection Rate
+
+</th>
+
+</tr>
+
+<tr>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+
+Predictors
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+Estimates
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+CI
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+p
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Intercept
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.10
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.29 – 0.10
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.318
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Individualism
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.005</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Masculinity
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.002</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Uncertainty Avoidance
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.006</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Freedom
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.03
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.066
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Political System Satisfaction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03 – -0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.008</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Competitiveness
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.01 – 0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.211
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Government Confidence
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.04
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.08
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.067
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Total Border Closure
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.04 – -0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.004</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Movement Restriction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.01 – 0.05
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.114
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Mask Level 4
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.049</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Mask Level 2
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.05 – 0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.154
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+
+Observations
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+
+39
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+
+R<sup>2</sup> / R<sup>2</sup> adjusted
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+
+0.721 / 0.608
+
+</td>
+
+</tr>
+
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Methods Step 2: Running Regressions</h2></hgroup><article  id="methods-step-2-running-regressions">
+
+<p>We started with a simple OLS linear regression model. To test for additional robustness due to the small sample size (only had full data for 39 countries), we then performed additional complex analyses:</p>
+
+<ol>
+<li>10-segment cross validation to measure predictive strength of patterns in our data;</li>
+<li>Partial least squares analysis to identify explanatory components; and</li>
+<li>Jackknife regression to see if prior linear regression results were still found with estimated datapoints.</li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Death Rate Results: the OLS Regression</h2></hgroup><article  class="codefont2" id="death-rate-results-the-ols-regression">
+
+<div id="row1">
+<div class="column-left">
+<p><font size="3"><br> <strong><em>H1a: Variables measuring greater (physical or mental) wellness will predict lower death rates.</em></strong>: Weakly Supported</p>
+
+<p><strong><em>H2a: Variables measuring greater social/political development will predict lower death rates.</em></strong>: Supported</p>
+
+<p><strong><em>H3a: Variables measuring greater personal independence will predict greater death rates.</em></strong>: Supported</p>
+
+<p><strong><em>H4a: Variables measuring government mitigation orders will predict lower death rates.</em></strong>: Supported </font></p></div>
+
+<div class="column-right">
+<table style="border-collapse:collapse; border:none;">
+
+<tr>
+
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+
+ 
+
+</th>
+
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+
+Death Rate
+
+</th>
+
+</tr>
+
+<tr>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+
+Predictors
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+Estimates
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+CI
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+p
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Intercept
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.522
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Individualism
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.018</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Uncertainty Avoidance
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.023</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Freedom
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.015</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Politial System Satisfaction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.002</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Health
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.075
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Border Closure
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.015</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+
+Observations
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+
+39
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+
+R<sup>2</sup> / R<sup>2</sup> adjusted
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+
+0.692 / 0.634
+
+</td>
+
+</tr>
+
+</table></div></div>
+
+</article></slide><slide class=""><hgroup><h2>Infection Rate Results: the OLS Regression</h2></hgroup><article  class="codefont2" id="infection-rate-results-the-ols-regression">
+
+<div id="row1">
+<div class="column-left">
+<p><font size="3"><br></p>
+
+<p><strong><em>H1b: Variables measuring greater (physical or mental) wellness will predict lower case rates.</em></strong>: Weakly Supported</p>
+
+<p><strong><em>H2b: Variables measuring greater social/political development will predict lower case rates.</em></strong>: Supported</p>
+
+<p><strong><em>H3b: Variables measuring greater personal independence will predict greater case rates.</em></strong>: Supported</p>
+
+<p><strong><em>H4b: Variables measuring government mitigation orders will predict lower case rates.</em></strong>: Supported</p>
+
+<p></font></p></div>
+
+<div class="column-right">
+<table style="border-collapse:collapse; border:none;">
+
+<tr>
+
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+
+ 
+
+</th>
+
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+
+Infection Rate
+
+</th>
+
+</tr>
+
+<tr>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+
+Predictors
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+Estimates
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+CI
+
+</td>
+
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+
+p
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Intercept
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.10
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.29 – 0.10
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.318
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Individualism
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.005</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Masculinity
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.002</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Uncertainty Avoidance
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.00 – 0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.006</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Freedom
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.03
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.066
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Political System Satisfaction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03 – -0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.008</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Competitiveness
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.01 – 0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.211
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Government Confidence
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.04
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.00 – 0.08
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.067
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Border Closure
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.04 – -0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.004</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Movement Restriction
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.01 – 0.05
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.114
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Masl Level 4
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.03 – -0.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.049</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+Mask Level 2
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+-0.05 – 0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.154
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+
+Observations
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+
+39
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+
+R<sup>2</sup> / R<sup>2</sup> adjusted
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+
+0.721 / 0.608
+
+</td>
+
+</tr>
+
+</table></div></div>
+
+</article></slide><slide class=""><hgroup><h2>Interesting Findings</h2></hgroup><article  id="interesting-findings">
+
+<ul>
+<li>Satisfaction with Political System (0-10)</li>
+<li>This variable was found to significantly explain both of the DVs.</li>
+</ul>
+
+<p><img src="final_project_files/figure-html/unnamed-chunk-14-1.png" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Interesting Findings</h2></hgroup><article  id="interesting-findings-1">
+
+<ul>
+<li>Face Covering Policy (0-4)</li>
+<li>This variable was found to significantly explain <strong>Infection Rate</strong> only.</li>
+</ul>
+
+<p><img src="final_project_files/figure-html/unnamed-chunk-15-1.png" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Interesting Findings</h2></hgroup><article  id="interesting-findings-2">
+
+<ul>
+<li>Perceived Personal Freedom (0-10)</li>
+<li>This variable was found to significantly explain <strong>Death Rate</strong> only.</li>
+</ul>
+
+<p><img src="final_project_files/figure-html/unnamed-chunk-17-1.png" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Discussion</h2></hgroup><article  id="discussion">
+
+<ul>
+<li><p>Limitation: small sample size</p></li>
+<li><p>International control level predicts lower death rates</p></li>
+<li><p>International control level and internal control level predict lower infection rates</p></li>
+<li><p>Greater personal independence predicts greater death rates and infection rates</p></li>
+<li><p>Greater political system satisfaction predicts lower death rates and infection rates</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Attribution</h2></hgroup><article  id="attribution">
+
+<p>Every team member attended meetings, found datasets, and brainstormed ideas. Shi Shi did the backward and forward regressions to select the variables. Bingling and Mason ran the OLS regressions, cross-validation LM regressions, and PLS and Jackknife tests. Yixuan made the beautiful maps. Last but not least, Jason made the slides for our presentation.</p></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

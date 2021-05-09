@@ -1,0 +1,47 @@
+---
+title: "style.css"
+author: "Bingling"
+date: "5/5/2021"
+output: 
+  html_document:
+    css: "style.css"
+---
+
+<style>
+
+#row1{
+  height: 280px;
+  padding: 4px;
+}
+
+#row2{
+  height: 150px;
+  padding: 10px;
+}
+
+.column-left{
+  float: left;
+  height: 100%;
+  width: 48%;
+  text-align: left;
+}
+.column-right{
+  float: right;
+  height: 100%;
+  width: 48%;
+  text-align: left;
+}
+
+</style>
+
+
+.codefont1 pre {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.codefont2 pre {
+    font-size: 8px;
+    line-height: 8px;
+}
+
