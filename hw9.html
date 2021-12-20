@@ -14,18 +14,25 @@
 
 <title>Data Science Sample 4 (HW9)</title>
 
-<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -37,11 +44,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -54,32 +56,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -89,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -109,40 +82,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 41px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h2 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h3 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h4 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h5 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h6 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -170,7 +116,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -182,7 +128,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -193,10 +139,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -208,7 +167,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -304,7 +262,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -382,17 +340,17 @@ nb_default</code></pre>
 ## A-priori probabilities:
 ## Y
 ##      Bill    Dimant 
-## 0.4778623 0.5221377 
+## 0.4692522 0.5307478 
 ## 
 ## Conditional probabilities:
 ##         sentiment
-## Y             anger anticipation    disgust       fear        joy   negative   positive    sadness   surprise
-##   Bill   0.04398690   0.15301825 0.02058961 0.07440337 0.11277492 0.08235845 0.26813290 0.04445484 0.05381376
-##   Dimant 0.06252677   0.10706638 0.03940043 0.06338330 0.07152034 0.12119914 0.27922912 0.05952891 0.04668094
+## Y             anger anticipation    disgust       fear        joy   negative
+##   Bill   0.04520548   0.14794521 0.02100457 0.07716895 0.10639269 0.07945205
+##   Dimant 0.05248284   0.10940654 0.03754542 0.07186112 0.07993541 0.12192168
 ##         sentiment
-## Y             trust
-##   Bill   0.14646701
-##   Dimant 0.14946467</code></pre>
+## Y          positive    sadness   surprise      trust
+##   Bill   0.27305936 0.04383562 0.05296804 0.15296804
+##   Dimant 0.26968107 0.05813484 0.04319742 0.15583367</code></pre>
 </div>
 <div id="part-b" class="section level4">
 <h4>Part B:</h4>
@@ -403,26 +361,26 @@ confusionMatrix(default_pred, as.factor(test$person))</code></pre>
 ## 
 ##           Reference
 ## Prediction Bill Dimant
-##     Bill    205    188
-##     Dimant  330    395
+##     Bill    194    135
+##     Dimant  354    484
 ##                                           
-##                Accuracy : 0.5367          
-##                  95% CI : (0.5069, 0.5662)
-##     No Information Rate : 0.5215          
-##     P-Value [Acc &gt; NIR] : 0.1616          
+##                Accuracy : 0.581           
+##                  95% CI : (0.5521, 0.6095)
+##     No Information Rate : 0.5304          
+##     P-Value [Acc &gt; NIR] : 0.0002904       
 ##                                           
-##                   Kappa : 0.0614          
+##                   Kappa : 0.1391          
 ##                                           
-##  Mcnemar&#39;s Test P-Value : 5.822e-10       
+##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16       
 ##                                           
-##             Sensitivity : 0.3832          
-##             Specificity : 0.6775          
-##          Pos Pred Value : 0.5216          
-##          Neg Pred Value : 0.5448          
-##              Prevalence : 0.4785          
-##          Detection Rate : 0.1834          
-##    Detection Prevalence : 0.3515          
-##       Balanced Accuracy : 0.5304          
+##             Sensitivity : 0.3540          
+##             Specificity : 0.7819          
+##          Pos Pred Value : 0.5897          
+##          Neg Pred Value : 0.5776          
+##              Prevalence : 0.4696          
+##          Detection Rate : 0.1662          
+##    Detection Prevalence : 0.2819          
+##       Balanced Accuracy : 0.5680          
 ##                                           
 ##        &#39;Positive&#39; Class : Bill            
 ## </code></pre>
@@ -460,15 +418,15 @@ sentiment_colin &lt;-
 pred_dan &lt;- predict(nb_default, sentiment_dan, type=&quot;class&quot;)
 dan_dimant &lt;- pred_dan[]==&quot;Dimant&quot;
 sum(dan_dimant==TRUE)</code></pre>
-<pre><code>## [1] 1491</code></pre>
+<pre><code>## [1] 1692</code></pre>
 <pre class="r"><code>sum(dan_dimant==FALSE)</code></pre>
-<pre><code>## [1] 773</code></pre>
+<pre><code>## [1] 616</code></pre>
 <pre class="r"><code>pred_colin &lt;- predict(nb_default, sentiment_colin, type=&quot;class&quot;)
 colin_dimant &lt;- pred_colin[]==&quot;Dimant&quot;
 sum(colin_dimant==TRUE)</code></pre>
-<pre><code>## [1] 2210</code></pre>
+<pre><code>## [1] 2453</code></pre>
 <pre class="r"><code>sum(colin_dimant==FALSE)</code></pre>
-<pre><code>## [1] 1002</code></pre>
+<pre><code>## [1] 770</code></pre>
 <div id="results" class="section level4">
 <h4>Results:</h4>
 <p>The summary output of the Naive Bayes classifier shows that person 0 (Dimant) expressed sentiments more related to anticipation, disgust, fear, and negativity in their tweets, while person 1 (Bill) expressed sentiments more related to anger, joy, positivity, and sadness in their tweets. Both people expressed the same level of surprise and trust in their tweets.</p>
@@ -509,7 +467,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

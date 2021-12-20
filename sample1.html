@@ -13,18 +13,25 @@
 
 <title>Data Science Sample 1</title>
 
-<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -36,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -53,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -88,10 +65,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +81,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 41px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h2 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h3 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h4 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h5 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
-.section h6 {
-  padding-top: 46px;
-  margin-top: -46px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +115,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +127,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +138,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +166,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -303,7 +261,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -317,7 +275,9 @@ $(document).ready(function () {
 <p>We will be loading a dataset of American names from the years 1880 to 2010. (This data set aims to be representative of the true U.S. population.) We will use this dataset to explore the popularity of names and changes in popularity.</p>
 <pre class="r"><code>names &lt;- read_csv(&quot;SSA-longtail-names.csv&quot;, 
                   col_types = cols(X1 = col_skip(), sex = col_character()))</code></pre>
-<pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...1</code></pre>
+<pre><code>## Warning: The following named parsers don&#39;t match the column names: X1</code></pre>
 <pre class="r"><code>names$sum = names %&gt;% select(`1880`:`2010`) %&gt;% rowSums()
 
 names_prop = names %&gt;% 
@@ -326,20 +286,20 @@ names_prop = names %&gt;%
 names_prop %&gt;% 
   mutate(year = as.numeric(year)) %&gt;% group_by(year) %&gt;% 
   mutate(annual_sum = sum(count), proportion = count/annual_sum)</code></pre>
-<pre><code>## # A tibble: 12,857,388 x 7
+<pre><code>## # A tibble: 12,857,388 x 8
 ## # Groups:   year [131]
-##    name  sex       sum  year count annual_sum proportion
-##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Mary  F     4103935  1880  7065     201486     0.0351
-##  2 Mary  F     4103935  1881  6919     192703     0.0359
-##  3 Mary  F     4103935  1882  8149     221538     0.0368
-##  4 Mary  F     4103935  1883  8012     216954     0.0369
-##  5 Mary  F     4103935  1884  9217     243466     0.0379
-##  6 Mary  F     4103935  1885  9128     240858     0.0379
-##  7 Mary  F     4103935  1886  9891     255323     0.0387
-##  8 Mary  F     4103935  1887  9888     247395     0.0400
-##  9 Mary  F     4103935  1888 11754     299488     0.0392
-## 10 Mary  F     4103935  1889 11649     288959     0.0403
+##     ...1 name  sex       sum  year count annual_sum proportion
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1 Mary  F     4103935  1880  7065     201486     0.0351
+##  2     1 Mary  F     4103935  1881  6919     192703     0.0359
+##  3     1 Mary  F     4103935  1882  8149     221538     0.0368
+##  4     1 Mary  F     4103935  1883  8012     216954     0.0369
+##  5     1 Mary  F     4103935  1884  9217     243466     0.0379
+##  6     1 Mary  F     4103935  1885  9128     240858     0.0379
+##  7     1 Mary  F     4103935  1886  9891     255323     0.0387
+##  8     1 Mary  F     4103935  1887  9888     247395     0.0400
+##  9     1 Mary  F     4103935  1888 11754     299488     0.0392
+## 10     1 Mary  F     4103935  1889 11649     288959     0.0403
 ## # ... with 12,857,378 more rows</code></pre>
 <p>We have loaded the data and used pivot longer to obtain tidy data. See the sample above starting with Mary.</p>
 <div id="proportion-of-the-top-10-names-over-time" class="section level2">
@@ -372,20 +332,20 @@ names_prop %&gt;%
   mutate(growth_factor = count/prevcount) %&gt;% 
   mutate(difference = count-prevcount) %&gt;% 
   filter(prevcount &gt; 5000) %&gt;% arrange(desc(growth_factor))</code></pre>
-<pre><code>## # A tibble: 12,039 x 8
+<pre><code>## # A tibble: 12,039 x 9
 ## # Groups:   name, sex [504]
-##    name       sex       sum year  count prevcount growth_factor difference
-##    &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Debra      F      549898 1951  17045      6185          2.76      10860
-##  2 Nicholas   M      847367 1978  16344      6067          2.69      10277
-##  3 Jason      M      991561 1969  16498      7157          2.31       9341
-##  4 Ashley     F      816948 1983  33280     14844          2.24      18436
-##  5 Cindy      F      253906 1957  20248      9987          2.03      10261
-##  6 Brittany   F      353486 1985  15433      7660          2.01       7773
-##  7 Robert     M     4767995 1912  12835      6525          1.97       6310
-##  8 Jacqueline F      411757 1961  10978      5651          1.94       5327
-##  9 Charles    M     2335387 1912  11072      5726          1.93       5346
-## 10 Deborah    F      737810 1948  11247      5831          1.93       5416
+##     ...1 name       sex       sum year  count prevcount growth_factor difference
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+##  1  5518 Debra      F      549898 1951  17045      6185          2.76      10860
+##  2 61584 Nicholas   M      847367 1978  16344      6067          2.69      10277
+##  3 61792 Jason      M      991561 1969  16498      7157          2.31       9341
+##  4  7250 Ashley     F      816948 1983  33280     14844          2.24      18436
+##  5  1652 Cindy      F      253906 1957  20248      9987          2.03      10261
+##  6 18682 Brittany   F      353486 1985  15433      7660          2.01       7773
+##  7 61416 Robert     M     4767995 1912  12835      6525          1.97       6310
+##  8  2181 Jacqueline F      411757 1961  10978      5651          1.94       5327
+##  9 61410 Charles    M     2335387 1912  11072      5726          1.93       5346
+## 10   499 Deborah    F      737810 1948  11247      5831          1.93       5416
 ## # ... with 12,029 more rows</code></pre>
 <p>The name that grew as a percent the most (with at least 5000 babies of the same name in the prior year) was Debra. In 1951 the amount of Debra babies grew from 6185 to 17045.</p>
 </div>
@@ -394,20 +354,20 @@ names_prop %&gt;%
 <pre class="r"><code>names_prop %&gt;% group_by(name, sex) %&gt;% mutate(prevcount = lag(count)) %&gt;% 
   mutate(growth_factor = count/prevcount) %&gt;% mutate(difference = count-prevcount) %&gt;% 
   filter(prevcount &gt; 5000) %&gt;% arrange(growth_factor)</code></pre>
-<pre><code>## # A tibble: 12,039 x 8
+<pre><code>## # A tibble: 12,039 x 9
 ## # Groups:   name, sex [504]
-##    name      sex       sum year  count prevcount growth_factor difference
-##    &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Brittany  F      353486 2001   2929      5176         0.566      -2247
-##  2 Warren    M      170805 1922   4482      7797         0.575      -3315
-##  3 Brooke    F      171659 1982   3149      5329         0.591      -2180
-##  4 Brittany  F      353486 2000   5176      7940         0.652      -2764
-##  5 James     M     5049727 1901   4735      7246         0.653      -2511
-##  6 George    M     1443869 1901   3609      5405         0.668      -1796
-##  7 Christine F      581689 1953  11798     17531         0.673      -5733
-##  8 Latoya    F       45301 1985   3404      5048         0.674      -1644
-##  9 Jaime     F       49138 1978   4002      5903         0.678      -1901
-## 10 Chelsea   F      151211 1994   7715     11289         0.683      -3574
+##     ...1 name      sex       sum year  count prevcount growth_factor difference
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+##  1 18682 Brittany  F      353486 2001   2929      5176         0.566      -2247
+##  2 61495 Warren    M      170805 1922   4482      7797         0.575      -3315
+##  3 11147 Brooke    F      171659 1982   3149      5329         0.591      -2180
+##  4 18682 Brittany  F      353486 2000   5176      7940         0.652      -2764
+##  5 61409 James     M     5049727 1901   4735      7246         0.653      -2511
+##  6 61411 George    M     1443869 1901   3609      5405         0.668      -1796
+##  7   153 Christine F      581689 1953  11798     17531         0.673      -5733
+##  8 17689 Latoya    F       45301 1985   3404      5048         0.674      -1644
+##  9 12157 Jaime     F       49138 1978   4002      5903         0.678      -1901
+## 10  4270 Chelsea   F      151211 1994   7715     11289         0.683      -3574
 ## # ... with 12,029 more rows</code></pre>
 <p>The name that shrank as a percent the most (with at least 5000 babies of the same name in the prior year) was Brittany. In 2001 the amount of Brittany babies shrank from 5176 to 2929. Interestingly, Britney Spears’ popularity may have hit a crescendo that year, after performing in the Super Bowl Halftime Show in January (alongside NSYNC and Aerosmith). This warrants further analysis!</p>
 </div>
@@ -500,7 +460,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
