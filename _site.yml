@@ -5,10 +5,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Data Science Samples"
-      href: samples.html
     - text: "Research Projects"
-      href: Research.html
+      href: samples.html
     - text: "Resume"
       href: resume.pdf
 
