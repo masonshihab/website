@@ -246,10 +246,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="samples.html">Data Science Samples</a>
-</li>
-<li>
-  <a href="Research.html">Research Projects</a>
+  <a href="samples.html">Research Projects</a>
 </li>
 <li>
   <a href="resume.pdf">Resume</a>
@@ -340,17 +337,17 @@ nb_default</code></pre>
 ## A-priori probabilities:
 ## Y
 ##      Bill    Dimant 
-## 0.4692522 0.5307478 
+## 0.4832641 0.5167359 
 ## 
 ## Conditional probabilities:
 ##         sentiment
-## Y             anger anticipation    disgust       fear        joy   negative
-##   Bill   0.04520548   0.14794521 0.02100457 0.07716895 0.10639269 0.07945205
-##   Dimant 0.05248284   0.10940654 0.03754542 0.07186112 0.07993541 0.12192168
+## Y             anger anticipation    disgust       fear        joy   negative   positive    sadness   surprise
+##   Bill   0.04300589   0.14395654 0.01901313 0.07922137 0.12041648 0.07831598 0.26844726 0.04436397 0.05522861
+##   Dimant 0.05334462   0.11092295 0.03556308 0.07493649 0.08255715 0.11769687 0.27434378 0.04699407 0.05038103
 ##         sentiment
-## Y          positive    sadness   surprise      trust
-##   Bill   0.27305936 0.04383562 0.05296804 0.15296804
-##   Dimant 0.26968107 0.05813484 0.04319742 0.15583367</code></pre>
+## Y             trust
+##   Bill   0.14803078
+##   Dimant 0.15325995</code></pre>
 </div>
 <div id="part-b" class="section level4">
 <h4>Part B:</h4>
@@ -361,26 +358,26 @@ confusionMatrix(default_pred, as.factor(test$person))</code></pre>
 ## 
 ##           Reference
 ## Prediction Bill Dimant
-##     Bill    194    135
-##     Dimant  354    484
+##     Bill    167    149
+##     Dimant  385    442
 ##                                           
-##                Accuracy : 0.581           
-##                  95% CI : (0.5521, 0.6095)
-##     No Information Rate : 0.5304          
-##     P-Value [Acc &gt; NIR] : 0.0002904       
+##                Accuracy : 0.5328          
+##                  95% CI : (0.5034, 0.5621)
+##     No Information Rate : 0.5171          
+##     P-Value [Acc &gt; NIR] : 0.1501          
 ##                                           
-##                   Kappa : 0.1391          
+##                   Kappa : 0.0511          
 ##                                           
-##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16       
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
 ##                                           
-##             Sensitivity : 0.3540          
-##             Specificity : 0.7819          
-##          Pos Pred Value : 0.5897          
-##          Neg Pred Value : 0.5776          
-##              Prevalence : 0.4696          
-##          Detection Rate : 0.1662          
-##    Detection Prevalence : 0.2819          
-##       Balanced Accuracy : 0.5680          
+##             Sensitivity : 0.3025          
+##             Specificity : 0.7479          
+##          Pos Pred Value : 0.5285          
+##          Neg Pred Value : 0.5345          
+##              Prevalence : 0.4829          
+##          Detection Rate : 0.1461          
+##    Detection Prevalence : 0.2765          
+##       Balanced Accuracy : 0.5252          
 ##                                           
 ##        &#39;Positive&#39; Class : Bill            
 ## </code></pre>
@@ -418,15 +415,15 @@ sentiment_colin &lt;-
 pred_dan &lt;- predict(nb_default, sentiment_dan, type=&quot;class&quot;)
 dan_dimant &lt;- pred_dan[]==&quot;Dimant&quot;
 sum(dan_dimant==TRUE)</code></pre>
-<pre><code>## [1] 1692</code></pre>
+<pre><code>## [1] 1675</code></pre>
 <pre class="r"><code>sum(dan_dimant==FALSE)</code></pre>
-<pre><code>## [1] 616</code></pre>
+<pre><code>## [1] 608</code></pre>
 <pre class="r"><code>pred_colin &lt;- predict(nb_default, sentiment_colin, type=&quot;class&quot;)
 colin_dimant &lt;- pred_colin[]==&quot;Dimant&quot;
 sum(colin_dimant==TRUE)</code></pre>
-<pre><code>## [1] 2453</code></pre>
+<pre><code>## [1] 2516</code></pre>
 <pre class="r"><code>sum(colin_dimant==FALSE)</code></pre>
-<pre><code>## [1] 770</code></pre>
+<pre><code>## [1] 834</code></pre>
 <div id="results" class="section level4">
 <h4>Results:</h4>
 <p>The summary output of the Naive Bayes classifier shows that person 0 (Dimant) expressed sentiments more related to anticipation, disgust, fear, and negativity in their tweets, while person 1 (Bill) expressed sentiments more related to anger, joy, positivity, and sadness in their tweets. Both people expressed the same level of surprise and trust in their tweets.</p>
