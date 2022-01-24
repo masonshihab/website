@@ -6,10 +6,10 @@ output: html_document
 \  
 \  
   
-Hello, welcome to my GitHub!!!  
+Hello, welcome to my GitHub.
 \  
 
-Here you may view samples from data science projects I found interesting, as well as my research list and resume. More coming soon.
+This website is under construction. But I am excited to share my latest [Research Project](https://docs.google.com/presentation/d/1wqazMvWOb1UZCGqeV8-0Z1CoiLDWNBUg0UrLap0xDgc/edit#slide=id.g10f9d47fc24_5_41)!
 
 Add me on [LinkedIn](https://www.linkedin.com/in/masonshihab/)!
 \  
