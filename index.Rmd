@@ -9,7 +9,7 @@ output: html_document
 Hello, welcome to my GitHub.
 \  
 
-This website is under construction. But I am excited to share my latest [Research Project](https://docs.google.com/presentation/d/1wqazMvWOb1UZCGqeV8-0Z1CoiLDWNBUg0UrLap0xDgc/edit#slide=id.g10f9d47fc24_5_41)!
+This website is under construction. But I am excited to share my latest [Research Project](https://docs.google.com/presentation/d/1wqazMvWOb1UZCGqeV8-0Z1CoiLDWNBUg0UrLap0xDgc)!
 
 Add me on [LinkedIn](https://www.linkedin.com/in/masonshihab/)!
 \  
