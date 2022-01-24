@@ -337,17 +337,17 @@ nb_default</code></pre>
 ## A-priori probabilities:
 ## Y
 ##      Bill    Dimant 
-## 0.4832641 0.5167359 
+## 0.4829097 0.5170903 
 ## 
 ## Conditional probabilities:
 ##         sentiment
 ## Y             anger anticipation    disgust       fear        joy   negative   positive    sadness   surprise
-##   Bill   0.04300589   0.14395654 0.01901313 0.07922137 0.12041648 0.07831598 0.26844726 0.04436397 0.05522861
-##   Dimant 0.05334462   0.11092295 0.03556308 0.07493649 0.08255715 0.11769687 0.27434378 0.04699407 0.05038103
+##   Bill   0.04310345   0.14791289 0.01860254 0.07985481 0.11660617 0.07940109 0.26724138 0.04264973 0.05444646
+##   Dimant 0.05084746   0.11483051 0.03516949 0.07288136 0.08432203 0.11525424 0.27330508 0.05127119 0.05211864
 ##         sentiment
 ## Y             trust
-##   Bill   0.14803078
-##   Dimant 0.15325995</code></pre>
+##   Bill   0.15018149
+##   Dimant 0.15000000</code></pre>
 </div>
 <div id="part-b" class="section level4">
 <h4>Part B:</h4>
@@ -358,28 +358,28 @@ confusionMatrix(default_pred, as.factor(test$person))</code></pre>
 ## 
 ##           Reference
 ## Prediction Bill Dimant
-##     Bill    167    149
-##     Dimant  385    442
-##                                           
-##                Accuracy : 0.5328          
-##                  95% CI : (0.5034, 0.5621)
-##     No Information Rate : 0.5171          
-##     P-Value [Acc &gt; NIR] : 0.1501          
-##                                           
-##                   Kappa : 0.0511          
-##                                           
-##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
-##                                           
-##             Sensitivity : 0.3025          
-##             Specificity : 0.7479          
-##          Pos Pred Value : 0.5285          
-##          Neg Pred Value : 0.5345          
-##              Prevalence : 0.4829          
-##          Detection Rate : 0.1461          
-##    Detection Prevalence : 0.2765          
-##       Balanced Accuracy : 0.5252          
-##                                           
-##        &#39;Positive&#39; Class : Bill            
+##     Bill    168    153
+##     Dimant  384    437
+##                                          
+##                Accuracy : 0.5298         
+##                  95% CI : (0.5003, 0.559)
+##     No Information Rate : 0.5166         
+##     P-Value [Acc &gt; NIR] : 0.1953         
+##                                          
+##                   Kappa : 0.0456         
+##                                          
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16         
+##                                          
+##             Sensitivity : 0.3043         
+##             Specificity : 0.7407         
+##          Pos Pred Value : 0.5234         
+##          Neg Pred Value : 0.5323         
+##              Prevalence : 0.4834         
+##          Detection Rate : 0.1471         
+##    Detection Prevalence : 0.2811         
+##       Balanced Accuracy : 0.5225         
+##                                          
+##        &#39;Positive&#39; Class : Bill           
 ## </code></pre>
 </div>
 </div>
@@ -415,15 +415,15 @@ sentiment_colin &lt;-
 pred_dan &lt;- predict(nb_default, sentiment_dan, type=&quot;class&quot;)
 dan_dimant &lt;- pred_dan[]==&quot;Dimant&quot;
 sum(dan_dimant==TRUE)</code></pre>
-<pre><code>## [1] 1675</code></pre>
+<pre><code>## [1] 1613</code></pre>
 <pre class="r"><code>sum(dan_dimant==FALSE)</code></pre>
-<pre><code>## [1] 608</code></pre>
+<pre><code>## [1] 670</code></pre>
 <pre class="r"><code>pred_colin &lt;- predict(nb_default, sentiment_colin, type=&quot;class&quot;)
 colin_dimant &lt;- pred_colin[]==&quot;Dimant&quot;
 sum(colin_dimant==TRUE)</code></pre>
-<pre><code>## [1] 2516</code></pre>
+<pre><code>## [1] 2404</code></pre>
 <pre class="r"><code>sum(colin_dimant==FALSE)</code></pre>
-<pre><code>## [1] 834</code></pre>
+<pre><code>## [1] 928</code></pre>
 <div id="results" class="section level4">
 <h4>Results:</h4>
 <p>The summary output of the Naive Bayes classifier shows that person 0 (Dimant) expressed sentiments more related to anticipation, disgust, fear, and negativity in their tweets, while person 1 (Bill) expressed sentiments more related to anger, joy, positivity, and sadness in their tweets. Both people expressed the same level of surprise and trust in their tweets.</p>
