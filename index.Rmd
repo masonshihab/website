@@ -1,5 +1,4 @@
 ---
-title: "Mason Shihab"
 output: html_document
 ---
 \  
@@ -9,7 +8,7 @@ output: html_document
 Hello, welcome to my GitHub.
 \  
 
-This website is under construction. But I am excited to share my latest [Research Project](https://docs.google.com/presentation/d/1wqazMvWOb1UZCGqeV8-0Z1CoiLDWNBUg0UrLap0xDgc)!
+This website is under construction, but feel free to download my [Resume](resume.pdf). In addition, I will be adding more [Research Projects](samples.html) this semester.
 
 Add me on [LinkedIn](https://www.linkedin.com/in/masonshihab/)!
 \  
