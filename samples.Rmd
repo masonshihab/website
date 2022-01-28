@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
     
 #### Project 1: Ironic effects of political ideology and increased risk-taking in Ohio drivers during COVID-19 Shutdown
 
-##### [Current Manuscript Draft](OhioCovidCrashes.pdf)
+##### [Current Manuscript Draft](OhioCovidCrashes.pdf){target="_blank"}
 
-##### [Presentation Deck](https://docs.google.com/presentation/d/e/2PACX-1vT0Vk0ugdWUUl7fsyrQW2rF3VEhrjRUWCqVJFBDeKlYF4IVb9fWvjkVI9v7TjK-_2EpCb0d7FJbhOsD/pub?start=false&loop=false&delayms=60000)
+##### [Presentation Deck](https://docs.google.com/presentation/d/e/2PACX-1vT0Vk0ugdWUUl7fsyrQW2rF3VEhrjRUWCqVJFBDeKlYF4IVb9fWvjkVI9v7TjK-_2EpCb0d7FJbhOsD/pub?start=false&loop=false&delayms=60000){target="_blank"}
 
-##### [Tableau Dashboards](https://public.tableau.com/authoring/IronicEffects/OhioCrashesReport)
+##### [Tableau Dashboards](https://public.tableau.com/authoring/IronicEffects/OhioCrashesReport){target="_blank"}
