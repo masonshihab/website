@@ -5,7 +5,7 @@ output: html_document
 \  
 \  
   
-Hello, welcome to my GitHub.
+##### Hello, welcome to my GitHub.
 \  
 
 This website is under construction, but feel free to download my [Resume](resume.pdf). In addition, I will be adding more [Research Projects](samples.html) this semester.
