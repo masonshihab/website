@@ -1,5 +1,5 @@
 ---
-title: "Data Science Samples"
+title: "Research Projects"
 output: html_document
 ---
 
@@ -11,14 +11,10 @@ knitr::opts_chunk$set(echo = TRUE)
 \  
 \  
     
-##### [Sample 1: Names Dataset](sample1.html)
+## Project 1: Ironic effects of political ideology and increased risk-taking in Ohio drivers during COVID-19 Shutdown
 
-##### [Sample 2: Election Prediction](sample2.html)
+##### [Sample 1: Current Manuscript Draft](OhioCovidCrashes.pdf)
 
-##### [Sample 3: Mask Usage Clustering](sample3.html)
+##### [Presentation Deck](https://docs.google.com/presentation/d/e/2PACX-1vT0Vk0ugdWUUl7fsyrQW2rF3VEhrjRUWCqVJFBDeKlYF4IVb9fWvjkVI9v7TjK-_2EpCb0d7FJbhOsD/pub?start=false&loop=false&delayms=60000)
 
-##### [Sample 4: Tweet Sentiment Analysis (HW9)](hw9.html)
-
-##### [Sample 5: Class Network Analysis (HW10)](hw10.html)
-
-##### [Sample 6: Predicting COVID-19 Outcome (Final Project)](final_project.html)
+##### [Tableau Dashboards](https://public.tableau.com/authoring/IronicEffects/OhioCrashesReport)
