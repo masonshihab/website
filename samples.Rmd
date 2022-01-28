@@ -1,19 +1,20 @@
 ---
-title: "Research Projects"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+### Research Projects
   
 \  
 \  
 \  
     
-## Project 1: Ironic effects of political ideology and increased risk-taking in Ohio drivers during COVID-19 Shutdown
+#### Project 1: Ironic effects of political ideology and increased risk-taking in Ohio drivers during COVID-19 Shutdown
 
-##### [Sample 1: Current Manuscript Draft](OhioCovidCrashes.pdf)
+##### [Current Manuscript Draft](OhioCovidCrashes.pdf)
 
 ##### [Presentation Deck](https://docs.google.com/presentation/d/e/2PACX-1vT0Vk0ugdWUUl7fsyrQW2rF3VEhrjRUWCqVJFBDeKlYF4IVb9fWvjkVI9v7TjK-_2EpCb0d7FJbhOsD/pub?start=false&loop=false&delayms=60000)
 
