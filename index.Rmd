@@ -10,5 +10,5 @@ output: html_document
 
 This website is under construction, but feel free to download my [Resume](resume.pdf){target="_blank"}. In addition, I will be adding more [Research Projects](samples.html) this semester.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/masonshihab/){target="_blank"}!
+Connect with me on [LinkedIn](https://www.linkedin.com/in/masonshihab/){target="_blank"} or shoot me an email at mshihab@sas.upenn.edu!
 \  
