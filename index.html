@@ -13,8 +13,8 @@
 
 <title>index.knit</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -232,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -248,7 +252,7 @@ $(document).ready(function () {
   <a href="samples.html">Research Projects</a>
 </li>
 <li>
-  <a href="resume.pdf">Resume</a>
+  <a href="resume.pdf{target=&quot;_blank&quot;}">Resume</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -270,8 +274,14 @@ $(document).ready(function () {
 <div id="hello-welcome-to-my-github." class="section level5">
 <h5>Hello, welcome to my GitHub.</h5>
 <p> </p>
-<p>This website is under construction, but feel free to download my <a href="resume.pdf" target="_blank">Resume</a>. In addition, I will be adding more <a href="samples.html">Research Projects</a> this semester.</p>
-<p>Connect with me on <a href="https://www.linkedin.com/in/masonshihab/" target="_blank">LinkedIn</a> or shoot me an email at <a href="mailto:mshihab@sas.upenn.edu" class="email">mshihab@sas.upenn.edu</a>!  </p>
+<p>This website is under construction, but feel free to download my <a
+href="resume.pdf" target="_blank">Resume</a>. In addition, I will be
+adding more <a href="samples.html">Research Projects</a> this
+semester.</p>
+<p>Connect with me on <a href="https://www.linkedin.com/in/masonshihab/"
+target="_blank">LinkedIn</a> or shoot me an email at <a
+href="mailto:mshihab@sas.upenn.edu"
+class="email">mshihab@sas.upenn.edu</a>!  </p>
 </div>
 
 
