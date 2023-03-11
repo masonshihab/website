@@ -10,4 +10,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 \  
 \  
-[Download Link](resume.pdf){target="_blank"}
+[Download PDF](resume.pdf){target="_blank"}
