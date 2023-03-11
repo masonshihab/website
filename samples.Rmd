@@ -14,16 +14,23 @@ knitr::opts_chunk$set(echo = TRUE)
     
 ##### Project 1: Ironic effects of political ideology and increased risk-taking in Ohio drivers during COVID-19 Shutdown
 
-###### [Current Manuscript Draft](OhioCovidCrashes.pdf){target="_blank"}
+###### [Link to Publication](https://journals.plos.org/plosone/article/comments?id=10.1371/journal.pone.0279160){target="_blank"}
 
 ###### [Presentation Deck](https://docs.google.com/presentation/d/e/2PACX-1vT0Vk0ugdWUUl7fsyrQW2rF3VEhrjRUWCqVJFBDeKlYF4IVb9fWvjkVI9v7TjK-_2EpCb0d7FJbhOsD/pub?start=false&loop=false&delayms=60000){target="_blank"}
 
-###### [Tableau Dashboards](https://public.tableau.com/authoring/IronicEffects/OhioCrashesReport){target="_blank"}
+###### [Tableau Public Dashboards](https://public.tableau.com/authoring/IronicEffects/OhioCrashesReport){target="_blank"}
 
 \  
 \  
 
-##### Project 2: Investigating County-level Theft Rates in the U.S. in 2020
+##### Project 2: Barriers to Enforcing Laws and Support for Restricting Cell Phone Use While Driving among Law Enforcement Officers
+
+###### [Link to Publication](https://journals.sagepub.com/doi/full/10.1177/03611981221134625){target="_blank"}
+
+\  
+\  
+
+##### Project 3: Investigating County-level Theft Rates in the U.S. in 2020
 
 ###### [Current Manuscript Draft](Draft-471 Final Project Complete.pdf){target="_blank"}
 
