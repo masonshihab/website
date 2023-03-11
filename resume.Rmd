@@ -1,0 +1,13 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<iframe src="path/to/your/pdf/file.pdf" width="100%" height="600"></iframe>
+
+\  
+\  
+[Download Link](resume.pdf){target="_blank"}

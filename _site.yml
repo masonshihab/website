@@ -8,8 +8,8 @@ navbar:
     - text: "Research Projects"
       href: samples.html
     - text: "Resume"
-      href: resume.pdf{target="_blank"}
-
+      href: resume.html
+      
 output:
   html_document:
     theme: simplex
