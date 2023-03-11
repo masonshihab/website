@@ -8,7 +8,7 @@ navbar:
     - text: "Research Projects"
       href: samples.html
     - text: "Resume"
-      href: resume.pdf
+      href: resume.pdf{target="_blank"}
 
 output:
   html_document:
