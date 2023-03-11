@@ -6,7 +6,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<iframe src="path/to/your/pdf/resume.pdf" width="100%" height="600"></iframe>
+<iframe src="resume.pdf" width="100%" height="600"></iframe>
 
 \  
 \  
