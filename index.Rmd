@@ -8,7 +8,7 @@ output: html_document
 ##### Hello, welcome to my GitHub.
 \  
 
-I am a behavioral and data scientist exploring risk perception, marketing, and long-term planning. Here you can view or download my [Resume](resume.html){target="_blank"} and browse my [Research Projects](samples.html).
+I am a behavioral and data scientist exploring risk perception, marketing, and long-term planning. Here you can view or download my [Resume](resume.html){target="_blank"} and explore my [Research Projects](samples.html).
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/masonshihab/){target="_blank"} or shoot me an email at mshihab@sas.upenn.edu!
 \  
